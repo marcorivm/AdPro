@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+.table {
+	width:auto;
+}
+th.centered {
+	text-align:center;
+	vertical-align:middle;
+}
+.is_acceptable, .not_acceptable {text-align:center; vertical-align:middle; height:20px; padding:0;}
+.is_acceptable span, .not_acceptable span { font-size:0px; display:block; height:20px; width:20px; background:url(../img/OkWrong.png) no-repeat left top; margin: -10px auto 0 auto; top:50%; position:relative;}
+.not_acceptable span { background-position:left bottom;}
+.no-show {display:none;}
+.papper {
+	padding-left:100px;
+	background-color: #FFFFEF; 
+	background-image: -moz-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),-moz-linear-gradient(#eee .05em, transparent .05em);
+	background-image: -ms-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),-ms-linear-gradient(#eee .05em, transparent .05em);
+	background-image: -o-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),-o-linear-gradient(#eee .05em, transparent .05em);
+	background-image: -webkit-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),-webkit-linear-gradient(#eee .05em, transparent .05em);
+	
+	background-image: linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),linear-gradient(#eee .05em, transparent .05em);
+
+	background-size: 100% 3.2em;
+	
+}
+.container-fluid { margin-left:30px; margin-right:30px; }
