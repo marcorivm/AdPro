@@ -30,7 +30,7 @@
 <div class="modal fade" id="addModal">
 	<div class="modal-header">
 		<button class="close" data-dismiss="modal">×</button>
-		<h3>Aregar nueva evaluaci&oacute;n</h3>
+		<h3>Agregar nueva evaluaci&oacute;n</h3>
 	</div>
 	<div class="modal-body">
 		<form method="post" action="/evaluations.php" name="add-evaluation" id="add_eval_form" class="form-horizontal">
