@@ -21,4 +21,5 @@
 	<script src="/assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
 	<script src="/assets/js/custom.js" type="text/javascript"></script>
 	<script src="/assets/js/json.js" type="text/javascript"></script>
+	<script src="/assets/js/jTip.js" type="text/javascript"></script>
   </head>

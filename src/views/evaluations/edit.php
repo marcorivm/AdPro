@@ -40,16 +40,16 @@
 				<td class="project_cell"><a href="/projects.php?edit-project=<?php echo $currProj->getId();?>" title="Ver informaci&oacute;n del proyecto"><?php echo $currProj->getName();?></a></td>
 				<?php
 				foreach($objectives[0] as $currObj){
-					$currProj->setAcceptable($currObj->isAccepted($proj_obj[$currObj->getId()][$currProj->getId()]));
+					$currProj->setAcceptable($currObj->isAccepted($proj_obj[$currObj->getId()][$currProj->getId()]['score']));
 				?>
-				<td class="proj_<?php echo $currProj->getId();?>_<?php echo $currObj->getId();?>"><?php echo $currObj->getScore($proj_obj[$currObj->getId()][$currProj->getId()]);?></td>
+				<td class="proj_<?php echo $currProj->getId();?>_<?php echo $currObj->getId();?> tip" title="<?php echo $proj_obj[$currObj->getId()][$currProj->getId()]['comments'];?>"><?php echo $currObj->getScore($proj_obj[$currObj->getId()][$currProj->getId()]['score']);?></td>
 				<?php } ?>
 				<td class="<?php echo ($currProj->isAcceptable())? "is_acceptable": "not_acceptable";?>"><span><?php echo ($currProj->isAcceptable())? "1": "0";?></span></td>
 				<?php
 				foreach($objectives[1] as $currObj){
-					$currProj->addToScore($currObj->getScore($proj_obj[$currObj->getId()][$currProj->getId()]));
+					$currProj->addToScore($currObj->getScore($proj_obj[$currObj->getId()][$currProj->getId()]['score']));
 				?>
-				<td><?php echo $currObj->getScore($proj_obj[$currObj->getId()][$currProj->getId()]);?></td>
+				<td class="tip" title="<?php echo $proj_obj[$currObj->getId()][$currProj->getId()]['comments'];?>"><?php echo $currObj->getScore($proj_obj[$currObj->getId()][$currProj->getId()]['score']);?></td>
 				<?php
 				}
 				?>

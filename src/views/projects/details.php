@@ -18,10 +18,10 @@
 		$objectives[1] = $currEval->getObjectives(1);
 		$proj_obj = $currEval->getProjectObjectives();
 		foreach($objectives[0] as $currObj){
-			$entry->setAcceptable($currObj->isAccepted($proj_obj[$currObj->getId()][$entry->getId()]));
+			$entry->setAcceptable($currObj->isAccepted($proj_obj[$currObj->getId()][$entry->getId()]['score']));
 		}
 		foreach($objectives[1] as $currObj){
-			$entry->addToScore($currObj->getScore($proj_obj[$currObj->getId()][$entry->getId()]));
+			$entry->addToScore($currObj->getScore($proj_obj[$currObj->getId()][$entry->getId()]['score']));
 		}
 ?>
 <tr>

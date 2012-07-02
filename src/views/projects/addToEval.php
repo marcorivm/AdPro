@@ -42,6 +42,13 @@
 				<p class="help-block"><?php echo $currObj->getDescription()?></p>
 			</div>
 		</div>
+		<div class="control-group">
+			<label class="control-label" for="obj_comm_<?php echo $currObj->getId();?>">Comentarios</label>
+			<div class="controls">
+				<textarea class="obj_comment" id="obj_comm_<?php echo $currObj->getId();?>" placeholder="Comentarios sobre el proyecto"></textarea>
+				<p class="help-block">Comentarios adicionales sobre el proyecto y el objetivo</p>
+			</div>
+		</div>
 		<? } ?>
 	</fieldset>
 	<fieldset>
@@ -55,6 +62,13 @@
 				<input type="text" class="input-xlarge obj_des" id="obj_val_<?php echo $currObj->getId()?>" placeholder="0-100">
 				<input type="hidden" id="obj_id_<?php echo $currObj->getId();?>" class="obj_id" value="<?php echo $currObj->getId();?>" />
 				<p class="help-block"><?php echo $currObj->getDescription()?></p>
+			</div>
+		</div>		
+		<div class="control-group">
+			<label class="control-label" for="obj_comm_<?php echo $currObj->getId();?>">Comentarios</label>
+			<div class="controls">
+				<textarea class="obj_comment" id="obj_comm_<?php echo $currObj->getId();?>" placeholder="Comentarios sobre el proyecto"></textarea>
+				<p class="help-block">Comentarios adicionales sobre el proyecto y el objetivo</p>
 			</div>
 		</div>
 		<? } ?>
@@ -95,14 +109,16 @@ $("#add_prj_form").on("submit", function() {
 	$(".obj_obl").each(function() {
 		var obj_id = $(this).attr("id").substr(8);
 		var obj_val = $(this).val();
+		var obj_comment = Validator.getRaw($(this).parents('.control-group').next('.control-group').find('.obj_comment'));
 		isValid = isValid && validate(this, 0);
-		obj_values.push({name: obj_id, value: obj_val});
+		obj_values.push({name: obj_id, value: obj_val, comment: obj_comment});
 	});
 	$(".obj_des").each(function() {
 		var obj_id = $(this).attr("id").substr(8);
 		var obj_val = $(this).val();
 		isValid = isValid && validate(this, 1);
-		obj_values.push({name: obj_id, value: obj_val});
+		var obj_comment = Validator.getRaw($(this).parents('.control-group').next('.control-group').find('.obj_comment'));
+		obj_values.push({name: obj_id, value: obj_val, comment: obj_comment});
 	});
 	to_send.push({name: 'eval_id', value: '<?php echo $entry->getId(); ?>'});
 	to_send.push({name: 'proj_data', value: $.toJSON(proj_data)});

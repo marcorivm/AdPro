@@ -91,7 +91,8 @@
 			$_query = "SELECT * FROM projects_objectives WHERE id_eval=".$this->_id." ORDER BY id_obj";
 			$_execQuery = mysql_query($_query);
 			while($_qR = mysql_fetch_array($_execQuery)){
-				$this->_proj_obj[$_qR['id_obj']][$_qR['id_pro']] = $_qR['score'];
+				$this->_proj_obj[$_qR['id_obj']][$_qR['id_pro']]['score'] = $_qR['score'];
+				$this->_proj_obj[$_qR['id_obj']][$_qR['id_pro']]['comments'] = $_qR['comments'];
 			}
 		}
 		
@@ -163,9 +164,8 @@
 		$_execQuery = mysql_query($_query);
 		$_query = "INSERT INTO evaluations_projects VALUES ('',".$eval_id.",".$proj_id.")";
 		$_execQuery = mysql_query($_query);
-		
 		foreach($obj_values as $currObj){
-			$_query = "INSERT INTO projects_objectives VALUES ('',".$proj_id.",".$currObj['name'].",".$eval_id.",".$currObj['value'].")";
+			$_query = "INSERT INTO projects_objectives VALUES ('',".$proj_id.",".$currObj['name'].",".$eval_id.",".$currObj['value'].",'".$currObj['comment']."')";
 			$_execQuery = mysql_query($_query);
 		}
 	}

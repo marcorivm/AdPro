@@ -10,7 +10,7 @@
 		<div class="control-group">
 			<label class="control-label" for="obj_val_<?php echo $currObj->getId();?>"><?php echo $currObj->getName();?></label>
 			<div class="controls">
-				<input type="text" class="input-xlarge obj_obl" id="obj_val_<?php echo $currObj->getId(); ?>" placeholder="0/50/100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()] ?>" />
+				<input type="text" class="input-xlarge obj_obl" id="obj_val_<?php echo $currObj->getId(); ?>" placeholder="0/50/100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()]['score'] ?>" />
 				<input type="hidden" id="obj_id_<?php echo $currObj->getId();?>" class="obj_id" value="<?php echo $currObj->getId();?>" />
 				<p class="help-block"><?php echo $currObj->getDescription()?></p>
 			</div>
@@ -25,7 +25,7 @@
 		<div class="control-group">
 			<label class="control-label" for="obj_val_<?php echo $currObj->getId()?>"><?php echo $currObj->getName()?></label>
 			<div class="controls">
-				<input type="text" class="input-xlarge obj_des" id="obj_val_<?php echo $currObj->getId()?>" placeholder="0-100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()] ?>" >
+				<input type="text" class="input-xlarge obj_des" id="obj_val_<?php echo $currObj->getId()?>" placeholder="0-100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()]['score'] ?>" >
 				<input type="hidden" id="obj_id_<?php echo $currObj->getId();?>" class="obj_id" value="<?php echo $currObj->getId();?>" />
 				<p class="help-block"><?php echo $currObj->getDescription()?></p>
 			</div>

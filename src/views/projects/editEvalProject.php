@@ -10,9 +10,16 @@
 		<div class="control-group">
 			<label class="control-label" for="obj_val_<?php echo $currObj->getId();?>"><?php echo $currObj->getName();?></label>
 			<div class="controls">
-				<input type="text" class="input-xlarge obj_obl" id="obj_val_<?php echo $currObj->getId(); ?>" placeholder="0/50/100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()] ?>" />
+				<input type="text" class="input-xlarge obj_obl" id="obj_val_<?php echo $currObj->getId(); ?>" placeholder="0/50/100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()]['score'] ?>" />
 				<input type="hidden" id="obj_id_<?php echo $currObj->getId();?>" class="obj_id" value="<?php echo $currObj->getId();?>" />
 				<p class="help-block"><?php echo $currObj->getDescription()?></p>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="obj_comm_<?php echo $currObj->getId();?>">Comentarios</label>
+			<div class="controls">
+				<textarea class="obj_comment" id="obj_comm_<?php echo $currObj->getId();?>" placeholder="Comentarios sobre el proyecto"><?php echo $proj_obj[$currObj->getId()][$project->getId()]['comments'] ?></textarea>
+				<p class="help-block">Comentarios adicionales sobre el proyecto y el objetivo</p>
 			</div>
 		</div>
 		<? } ?>
@@ -25,9 +32,16 @@
 		<div class="control-group">
 			<label class="control-label" for="obj_val_<?php echo $currObj->getId()?>"><?php echo $currObj->getName()?></label>
 			<div class="controls">
-				<input type="text" class="input-xlarge obj_des" id="obj_val_<?php echo $currObj->getId()?>" placeholder="0-100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()] ?>" >
+				<input type="text" class="input-xlarge obj_des" id="obj_val_<?php echo $currObj->getId()?>" placeholder="0-100" value="<?php echo $proj_obj[$currObj->getId()][$project->getId()]['score'] ?>" >
 				<input type="hidden" id="obj_id_<?php echo $currObj->getId();?>" class="obj_id" value="<?php echo $currObj->getId();?>" />
 				<p class="help-block"><?php echo $currObj->getDescription()?></p>
+			</div>
+		</div>		
+		<div class="control-group">
+			<label class="control-label" for="obj_comm_<?php echo $currObj->getId();?>">Comentarios</label>
+			<div class="controls">
+				<textarea class="obj_comment" id="obj_comm_<?php echo $currObj->getId();?>" placeholder="Comentarios sobre el proyecto"><?php echo $proj_obj[$currObj->getId()][$project->getId()]['comments'] ?></textarea>
+				<p class="help-block">Comentarios adicionales sobre el proyecto</p>
 			</div>
 		</div>
 		<? } ?>
@@ -42,18 +56,20 @@ $("#add_prj_form").on("submit", function() {
 	to_send.push({name: 'proj_id', value: '<?php echo $project->getId(); ?>'})
 
 
-	var obj_values = new Array(); // Array de el id y la calificación de cada objeto, sin necesidad d nada mas
+	var obj_values = new Array(); // Array de el id, la calificación y comentarios de cada objetivo, sin necesidad d nada mas
 	$(".obj_obl").each(function() {
 		var obj_id = $(this).attr("id").substr(8);
 		var obj_val = $(this).val();
+		var obj_comment = Validator.getRaw($(this).parents('.control-group').next('.control-group').find('.obj_comment'));
 		isValid = isValid && validate(this, 0);
-		obj_values.push({name: obj_id, value: obj_val});
+		obj_values.push({name: obj_id, value: obj_val, comment: obj_comment});
 	});
 	$(".obj_des").each(function() {
 		var obj_id = $(this).attr("id").substr(8);
 		var obj_val = $(this).val();
+		var obj_comment = Validator.getRaw($(this).parents('.control-group').next('.control-group').find('.obj_comment'));
 		isValid = isValid && validate(this, 1);
-		obj_values.push({name: obj_id, value: obj_val});
+		obj_values.push({name: obj_id, value: obj_val, comment: obj_comment});
 	});
 	to_send.push({name: 'eval_id', value: '<?php echo $entry->getId(); ?>'});
 	to_send.push({name: 'obj_values', value: $.toJSON(obj_values)});

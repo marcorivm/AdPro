@@ -148,6 +148,7 @@ CREATE TABLE IF NOT EXISTS `projects_objectives` (
   `id_obj` int(11) NOT NULL,
   `id_eval` int(11) NOT NULL,
   `score` int(11) NOT NULL DEFAULT '0',
+  `comments` VARCHAR( 2000 ) NULL ;
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
